@@ -1,0 +1,95 @@
+$header-height: 60px;
+$background-color: #202229;
+$primary-color: #53b667;
+$color: #fff;
+
+.logo-block {
+  height: $header-height;
+  line-height: $header-height;
+  color: $primary-color;
+  text-align: center;
+}
+
+.clossTabIcon {
+  color: $primary-color;
+}
+
+.el-menu {
+  margin-top: 3px;
+}
+
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 400px;
+}
+
+el-menu-item-group {
+  color: #909398 !important;
+}
+
+.el-aside {
+  transition: width 0.2s linear;
+  background-color: $background-color !important;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+}
+
+.main {
+  height: 100vh;
+  min-width: 800px;
+  min-height: 600px;
+  overflow: hidden;
+
+  aside {
+    overflow: visible;
+    height: 100%;
+    background-color: $background-color;
+    color: $color;
+
+    .isClossTab {
+      width: 100%;
+      height: $header-height;
+      cursor: pointer;
+      font-size: 25px;
+      text-align: center;
+      line-height: $header-height;
+      font-weight: bold;
+      box-sizing: border-box;
+    }
+    .menu {
+      width: 100%;
+      border-right: 0;
+    }
+  }
+
+  .main-header {
+    background-color: $background-color;
+    color: $color;
+
+    .el-dropdown {
+      cursor: pointer;
+      float: right;
+    }
+    .el-dropdown-link {
+      img {
+        $imgMargin: (($header-height - 50)/2);
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        background-color: #fff;
+        margin-top: $imgMargin;
+      }
+    }
+  }
+
+  .crumbs {
+    margin-bottom: 20px;
+  }
+
+  .main-footer {
+    text-align: center;
+    background-color: $background-color;
+    color: $color;
+    line-height: 50px;
+  }
+}
