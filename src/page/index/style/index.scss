@@ -1,13 +1,18 @@
 $header-height: 60px;
-$background-color: #202229;
-$primary-color: #53b667;
-$color: #fff;
+$background-color: #fbfbfb;
+$primary-color: #333;
+$color: #f4f4f9;
 
 .logo-block {
   height: $header-height;
   line-height: $header-height;
   color: $primary-color;
   text-align: center;
+
+  img {
+    height: 30px;
+    margin-top: 15px;
+  }
 }
 
 .clossTabIcon {
@@ -15,7 +20,13 @@ $color: #fff;
 }
 
 .el-menu {
+  width: 70%;
   margin-top: 3px;
+}
+
+.el-main {
+  background-color: #fbfbfb;
+  padding: 0px 20px;
 }
 
 .el-menu-vertical-demo:not(.el-menu--collapse) {
@@ -23,14 +34,12 @@ $color: #fff;
   min-height: 400px;
 }
 
-el-menu-item-group {
-  color: #909398 !important;
-}
-
 .el-aside {
+  position: relative;
+  z-index: 9;
   transition: width 0.2s linear;
-  background-color: $background-color !important;
-  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+  background-color: #fff !important;
+  box-shadow: 2px 0 6px #e3e3e7;
 }
 
 .main {
@@ -62,6 +71,8 @@ el-menu-item-group {
   }
 
   .main-header {
+    position: relative;
+    z-index: 1;
     background-color: $background-color;
     color: $color;
 

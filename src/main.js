@@ -32,7 +32,20 @@ import {
   BreadcrumbItem,
   Footer,
   RadioGroup,
+  Radio,
   RadioButton,
+  Steps,
+  Step,
+  Upload,
+  Dialog,
+  Divider,
+  Tabs,
+  TabPane,
+  Table,
+  TableColumn,
+  Popover,
+  Tag,
+  Popconfirm,
   Icon
 } from "element-ui";
 Vue.use(Form);
@@ -55,7 +68,20 @@ Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);
 Vue.use(Footer);
 Vue.use(RadioGroup);
+Vue.use(Radio);
 Vue.use(RadioButton);
+Vue.use(Steps);
+Vue.use(Step);
+Vue.use(Upload);
+Vue.use(Dialog);
+Vue.use(Divider);
+Vue.use(Tabs);
+Vue.use(TabPane);
+Vue.use(Table);
+Vue.use(TableColumn);
+Vue.use(Popover);
+Vue.use(Tag);
+Vue.use(Popconfirm);
 Vue.use(Icon);
 
 // axios

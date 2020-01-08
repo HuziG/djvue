@@ -8,11 +8,8 @@
 import axios from "axios";
 import store from "../store";
 import router from "@/router/router";
-// import {serialize} from '@/util/util'
 import { getToken } from "@/util/auth";
 import { Message } from "element-ui";
-// import website from '@/config/website';
-// import {Base64} from 'js-base64';
 
 axios.defaults.timeout = 10000;
 //返回其他状态吗

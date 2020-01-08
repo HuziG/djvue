@@ -17,9 +17,9 @@ export default {
 
 <style lang="scss" scoped>
 $header-height: 60px;
-$primary-color: #53b667;
 
 .header-block {
+  position: relative;
   line-height: $header-height + 5;
 }
 
@@ -28,7 +28,7 @@ $primary-color: #53b667;
 }
 
 .clossTabIcon {
-  color: $primary-color;
+  color: #333;
   font-size: 26px;
   cursor: pointer;
 }

@@ -1,11 +1,7 @@
 <template>
   <div>
     <el-container class="main">
-      <el-aside
-        class="el-aside"
-        :width="tabWidth + 'px'"
-        style="overflow:hidden;"
-      >
+      <el-aside class="el-aside" :width="tabWidth + 'px'" style="overflow:hidden;">
         <Slider :isCollapse="isCollapse" />
       </el-aside>
       <el-container>
@@ -40,7 +36,7 @@ export default {
     };
   },
   created() {
-    this.refreshToken();
+    // this.refreshToken();
   },
   methods: {
     // 10分钟检测 一次 token是否过期

@@ -6,70 +6,35 @@ import Land from "@/page/land";
 import Index from "../../page/index";
 import ErrorPage from "@/page/error-page/404.vue";
 
-import Home from "../../views/home";
-import Farmer from "../../views/farmer";
-import Base from "../../views/base";
-import Integral from "../../views/integral";
-import Task from "../../views/task";
-import Power from "../../views/power";
+import Product from "../../views/product";
+import Operation from "../../views/operation";
 
 export default new VueRouter({
   mode: "history",
   routes: [
     {
       path: "/",
-      name: "homePage",
       component: Index,
-      redirect: "/index/home"
+      redirect: "/index/product"
     },
     { path: "/land", name: "landPage", component: Land },
     {
       path: "/index",
-      name: "indexPage",
+      redirect: "/index/product",
       component: Index,
-      redirect: "/index/home",
-      meta: {
-        keepAlive: true
-      },
       children: [
         {
-          path: "home",
-          name: "home",
-          component: Home
+          path: "product",
+          component: Product
         },
         {
-          path: "base",
-          name: "base",
-          component: Base
-        },
-        {
-          path: "farmer",
-          name: "farmer",
-          component: Farmer
-        },
-        {
-          path: "task",
-          name: "task",
-          component: Task
-        },
-        {
-          path: "integral",
-          name: "integral",
-          component: Integral
-        },
-        {
-          path: "power",
-          name: "power",
-          component: Power,
-          meta: {
-            keepAlive: true
-          }
+          path: "operation",
+          component: Operation
         }
       ]
     },
     {
       path: "/404",
-      name: "404Page",
       component: ErrorPage
     },
     {
