@@ -15,9 +15,13 @@
             @close="handleFileDelete(scope.$index,index)"
           >
             {{item}}
-            <i class="el-icon-edit"></i>
-            <i class="el-icon-video-pause"></i>
-            <i class="el-icon-video-play"></i>
+            <i class="el-icon-edit" @click="handleEdit('编辑文件名',scope.$index,index,item)"></i>
+            <VoicePlay
+              :playId="playId"
+              :id="`${scope.$index}${index}`"
+              :url="'https://xxx1.com'"
+              :handlePlayVoice="handlePlayVoice"
+            />
           </el-tag>
         </template>
       </el-table-column>
@@ -27,14 +31,11 @@
           <el-button size="mini" @click="handleVoiceAdd" style="margin-left: 5px;">添加音频</el-button>
         </template>
         <template slot-scope="scope">
-          <el-popover placement="top" width="160" v-model="visible">
-            <el-input type="text" size="mini" class="edit-voice-name" v-model="voicename"></el-input>
-            <div style="text-align: right; margin: 0">
-              <el-button size="mini" type="text" @click="visible = false">取消</el-button>
-              <el-button type="primary" size="mini" @click="handleVoiceNameEdit(scope.$index)">确定</el-button>
-            </div>
-            <el-button slot="reference" size="mini" @click="voicename = scope.row.name">编辑音频名</el-button>
-          </el-popover>
+          <el-button
+            slot="reference"
+            size="mini"
+            @click="handleEdit('编辑音频名',scope.$index,0,scope.row.name)"
+          >编辑音频名</el-button>
           <el-upload
             action="https://jsonplaceholder.typicode.com/posts/"
             :limit="1"
@@ -42,7 +43,7 @@
             :on-error="handleFileUploadFail"
             style="display:inline-block;"
           >
-            <el-button size="mini" class="add-file">
+            <el-button size="mini" class="add-file" @click="handleFileUpload(scope.$index)">
               上传音频文件
               <i class="el-icon-upload el-icon--right"></i>
             </el-button>
@@ -56,30 +57,49 @@
         </template>
       </el-table-column>
     </el-table>
+
+    <el-dialog :title="editDialogTitle" width="300px" :visible.sync="dialogEditVisible">
+      值修改
+      <div class="block"></div>
+      <el-input type="text" v-model.trim="editTemplate.value"></el-input>
+      <div class="block"></div>
+      <div class="confirm-edit">
+        <el-button type="primary" @click="handleEditConfirm">确认修改</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
 <script>
+import VoicePlay from "./voiceplay";
+
 export default {
+  components: {
+    VoicePlay
+  },
   data() {
     return {
-      voicename: "",
+      playId: "",
+
       voiceadd: "",
-      visible: false,
+
       tableData: [
         {
           name: "森海",
           file: ["边缘敲击", "中间打击"]
         }
-      ]
+      ],
+
+      editTemplate: {
+        colIndex: "",
+        rowIndex: "",
+        value: ""
+      },
+      editDialogTitle: "",
+      dialogEditVisible: false,
+
+      voiceUploadIndex: ""
     };
-  },
-  watch: {
-    visible(val) {
-      if (!val) {
-        this.voicename = "";
-      }
-    }
   },
   methods: {
     // 音频添加
@@ -91,15 +111,6 @@ export default {
     handleVoiceDelete(index) {
       console.log(index);
     },
-    // 音频名称修改
-    handleVoiceNameEdit(index, val = this.voicename) {
-      this.visible = false;
-      if (val === "") {
-        return;
-      }
-      console.log(index);
-      console.log(val);
-    },
     // 音频文件上传成功
     handleFileUploadSucc(file) {
       console.log(file);
@@ -108,10 +119,35 @@ export default {
     handleFileUploadFail() {
       console.log("upload fail");
     },
+    // 音频文件上传
+    handleFileUpload(index) {
+      this.voiceUploadIndex = index;
+      console.log(index);
+    },
     // 音频文件删除
-    handleFileDelete(rowindex, tagindex) {
-      console.log(rowindex);
-      console.log(tagindex);
+    handleFileDelete(colIndex, rowIndex) {
+      console.log(colIndex, rowIndex);
+    },
+    // 编辑修改 click
+    handleEdit(title, colIndex, rowIndex, value) {
+      this.editDialogTitle = title;
+      this.dialogEditVisible = true;
+
+      this.editTemplate.colIndex = colIndex;
+      this.editTemplate.rowIndex = rowIndex;
+      this.editTemplate.value = value;
+    },
+    // 编辑修改确认
+    handleEditConfirm(
+      colIndex = this.editTemplate.colIndex,
+      rowIndex = this.editTemplate.rowIndex,
+      value = this.editTemplate.value
+    ) {
+      console.log(colIndex, rowIndex, value);
+    },
+    // 音频文件试听
+    handlePlayVoice(id) {
+      this.playId = id;
     }
   }
 };
@@ -144,5 +180,12 @@ export default {
     border-radius: 50px;
     cursor: pointer;
   }
+}
+
+.block {
+  height: 20px;
+}
+.confirm-edit {
+  text-align: center;
 }
 </style>
