@@ -33,7 +33,8 @@
       </el-form>
     </div>
     <div class="but-nav">
-      <el-button type="primary" class="next" @click="_handleStep()">下一步</el-button>
+      <el-button type="primary" class="prev" @click="_handleStep(0)">上一步</el-button>
+      <el-button type="primary" class="next" @click="_handleStep(2)">下一步</el-button>
     </div>
   </div>
 </template>
@@ -57,8 +58,8 @@ export default {
     };
   },
   methods: {
-    _handleStep() {
-      this.handleStep(1);
+    _handleStep(step) {
+      this.handleStep(step);
 
       sessionStorage.setItem("step1_value", JSON.stringify(this.form));
     }

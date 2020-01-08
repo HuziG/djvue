@@ -1,17 +1,20 @@
 <template>
   <div>
-    <div class="h2">产品最后的设置</div>
+    <div class="h2">产品关联设置</div>
     <div class="main">
       <div class="main-block">
-        <p class="title">已抵达最后一步</p>
-        <p class="vice-des">点击按钮立即发布产品吧</p>
-        <div class="but-group">
-          <el-button>立即发布产品</el-button>
+        <div class="step1">
+          <p class="title">是否需要关联产品</p>
+          <p class="vice-des">选择关联产品,发布该产品的其他语言版本</p>
+          <div class="but-group">
+            <el-button>不需要</el-button>
+            <el-button>需要</el-button>
+          </div>
         </div>
       </div>
     </div>
     <div class="but-nav">
-      <el-button type="primary" class="prev" @click="handleStep(4)">上一步</el-button>
+      <el-button type="primary" class="next" @click="handleStep(1)">下一步</el-button>
     </div>
   </div>
 </template>
@@ -20,6 +23,11 @@
 export default {
   props: {
     handleStep: Function
+  },
+  data() {
+    return {
+      step: 1
+    };
   }
 };
 </script>

@@ -5,8 +5,8 @@
       <AttrTable />
     </div>
     <div class="but-nav">
-      <el-button type="primary" class="prev" @click="handleStep(1)">上一步</el-button>
-      <el-button type="primary" class="next" @click="handleStep(3)">下一步</el-button>
+      <el-button type="primary" class="prev" @click="handleStep(2)">上一步</el-button>
+      <el-button type="primary" class="next" @click="handleStep(4)">下一步</el-button>
     </div>
   </div>
 </template>
