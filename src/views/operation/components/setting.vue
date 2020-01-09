@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="but-nav">
-      <el-button type="primary" class="prev" @click="handleStep(4)">上一步</el-button>
+      <el-button type="primary" class="prev" @click="handleStep(3)">上一步</el-button>
     </div>
   </div>
 </template>

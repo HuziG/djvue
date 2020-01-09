@@ -10,7 +10,7 @@
       <el-step title="步骤 5" description="产品最后设置"></el-step>
     </el-steps>
     <br />
-    <Connact v-show="step === 0" :handleStep="handleStep" />
+    <Connact v-if="step === 0" :handleStep="handleStep" />
     <BaseInfo v-show="step === 1" :handleStep="handleStep" />
     <MediaInfo v-show="step === 2" :handleStep="handleStep" />
     <AttrInfo v-show="step === 3" :handleStep="handleStep" />
