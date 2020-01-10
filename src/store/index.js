@@ -4,19 +4,19 @@
  * @Author: dingjia z
  * @Date: 2020-01-06 13:06:55
  * @LastEditors  : dingjia z
- * @LastEditTime : 2020-01-10 15:55:24
+ * @LastEditTime : 2020-01-10 21:37:20
  */
 import Vue from "vue";
 import Vuex from "vuex";
-import user from "./module/user";
+import createVuexAlong from "vuex-along";
 
 Vue.use(Vuex);
 
-const debug = process.env.NODE_ENV !== "production";
+import user from "./module/user";
 
 export default new Vuex.Store({
   modules: {
     user
   },
-  strict: debug
+  plugins: [createVuexAlong()]
 });

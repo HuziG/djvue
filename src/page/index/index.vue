@@ -1,7 +1,11 @@
 <template>
   <div>
     <el-container class="main">
-      <el-aside class="el-aside" :width="tabWidth + 'px'" style="overflow:hidden;">
+      <el-aside
+        class="el-aside"
+        :width="tabWidth + 'px'"
+        style="overflow:hidden;"
+      >
         <Slider :isCollapse="isCollapse" />
       </el-aside>
       <el-container>
@@ -36,15 +40,15 @@ export default {
     };
   },
   created() {
-    // this.refreshToken();
+    this.refreshToken();
   },
   methods: {
     // 10分钟检测 一次 token是否过期
-    // refreshToken() {
-    //   this.refreshTime = setInterval(() => {
-    //     console.log("console");
-    //   }, 600000);
-    // },
+    refreshToken() {
+      this.refreshTime = setInterval(() => {
+        console.log("console");
+      }, 600000);
+    },
 
     // slider 缩与弹出
     isClossTabFun() {

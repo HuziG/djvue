@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: dingjia z
+ * @Date: 2020-01-06 13:06:55
+ * @LastEditors  : dingjia z
+ * @LastEditTime : 2020-01-10 20:31:01
+ -->
 <template>
   <div id="container">
     <el-form
@@ -52,7 +60,6 @@
 
 <script>
 import Cookies from "js-cookie";
-import router from "@/router";
 
 import { UserLand } from "@/api/user";
 
@@ -86,47 +93,15 @@ export default {
         : (this.passwordType = "");
     },
     handleLogin() {
-      UserLand(this.loginForm.username, this.loginForm.password).then(res => {
-        router.push({ path: "/index" });
-        console.log(res);
+      const { username, password } = this.loginForm;
+
+      UserLand(username, password).then(res => {
+        Cookies.set("rem_name", username);
+        Cookies.set("rem_pass", password);
+        Cookies.set("token", res.token);
+        this.$store.commit("SetUserName", username);
+        this.$router.push("/index");
       });
-      /**
-       * 登陆
-       * 显示loading
-       * 成功
-       *  隐藏loading
-       *  获取loginForm 派发store 存储用户名 及 记住密码
-       *  立即获取token 派发store 存储token
-       *  设置全局token检测 定时获取方法(10分钟 / 次)
-       *  跳转至index page
-       * 失败
-       *  隐藏loading
-       *  获取回调数据
-       *  显示失败原因
-       */
-      // this.$loading.service({
-      //   fullscreen: true,
-      //   text: "登陆中，请稍后...",
-      //   lock: true
-      // });
-      // this.$refs.loginForm.validate(valid => {
-      //   if (valid) {
-      //     const loading = this.$loading({
-      //       lock: true,
-      //       text: "登录中,请稍后。。。",
-      //       spinner: "el-icon-loading"
-      //     });
-      //     this.$store
-      //       .dispatch("LoginByUsername", this.loginForm)
-      //       .then(() => {
-      //         this.$router.push({ path: this.tagWel.value });
-      //         loading.close();
-      //       })
-      //       .catch(() => {
-      //         loading.close();
-      //       });
-      //   }
-      // });
     }
   }
 };

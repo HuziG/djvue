@@ -1,25 +1,29 @@
-const state = {
-  username: ""
-};
+import router from "@/router";
+import { removeToken } from "@/util/auth";
 
-const getters = {};
+const user = {
+  state: {
+    username: "",
+    isLogining: false
+  },
 
-const actions = {
-  setUsername({ commit }, product) {
-    commit("setUsername", { username: product });
+  mutations: {
+    SetUserName(state, val) {
+      state.username = val;
+      state.isLogining = true;
+    },
+
+    ExitUser() {
+      removeToken();
+      router.push("/land");
+    }
+  },
+
+  getters: {
+    getUserName(state) {
+      return state.username;
+    }
   }
 };
 
-const mutations = {
-  setUsername(state, payload) {
-    state.username = payload;
-  }
-};
-
-export default {
-  namespaced: true,
-  state,
-  getters,
-  actions,
-  mutations
-};
+export default user;

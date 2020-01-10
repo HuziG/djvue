@@ -18,7 +18,6 @@ export const UserLand = (admin_name, admin_pass) =>
       admin_pass
     }
   });
-
 //   headers: {
 //     "Content-Type": "application/x-www-form-urlencoded"
 //   },
