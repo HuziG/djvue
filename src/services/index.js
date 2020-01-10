@@ -1,27 +1,29 @@
-/**
- * 全站http配置
- *
- * axios参数说明
- * isSerialize是否开启form表单提交
- * isToken是否需要token
+/*
+ * @Descripttion: 全站http配置
+ * @version:
+ * @Author: dingjia z
+ * @Date: 2020-01-06 13:06:55
+ * @LastEditors  : dingjia z
+ * @LastEditTime : 2020-01-10 18:21:59
  */
 import axios from "axios";
-import store from "../store";
-import router from "@/router/router";
-import { getToken } from "@/util/auth";
 import { Message } from "element-ui";
+import { serialize } from "../util/utils";
 
 axios.defaults.timeout = 10000;
-//返回其他状态吗
-axios.defaults.validateStatus = function(status) {
-  return status >= 200 && status <= 500; // 默认的
-};
-//跨域请求，允许保存cookie
-axios.defaults.withCredentials = true;
 
 //HTTPrequest拦截
 axios.interceptors.request.use(
   config => {
+    console.log("请求拦截");
+    console.log(config);
+
+    config.headers["Content-Type"] = "application/x-www-form-urlencoded";
+
+    if (config.method === "post") {
+      config.data = serialize(config.data);
+    }
+
     return config;
   },
   error => {
@@ -31,22 +33,26 @@ axios.interceptors.request.use(
 //HTTPresponse拦截
 axios.interceptors.response.use(
   res => {
-    const status = res.data.code || 200;
+    console.log("响应拦截");
+    console.log(res);
+
+    const code = res.data.code || 1;
     const message = res.data.msg || "未知错误";
+
     // token 失效
-    // if (status === 401) {
-    //   store.dispatch("FedLogOut").then(() => router.push({ path: "/login" }));
-    // }
-    if (status !== 200) {
+    if (code === -10) {
+      // store.dispatch("FedLogOut").then(() => router.push({ path: "/login" }));
+      console.log("token 失效");
+    }
+
+    if (code !== 1) {
       Message({
         message: message,
         type: "error"
       });
       return Promise.reject(new Error(message));
     }
-    //如果在白名单里则自行catch逻辑处理
-    //如果是401则跳转到登录页面
-    // 如果请求为非200否者默认统一处理
+
     return res;
   },
   error => {

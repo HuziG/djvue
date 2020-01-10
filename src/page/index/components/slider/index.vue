@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: dingjia z
+ * @Date: 2020-01-06 13:06:55
+ * @LastEditors  : dingjia z
+ * @LastEditTime : 2020-01-10 17:16:31
+ -->
 <template>
   <div id="slider-block">
     <router-link to="/index/home">
@@ -29,6 +37,19 @@
           <el-menu-item index="2">
             <i class="el-icon-thumb"></i>
             <span slot="title">产品操作</span>
+          </el-menu-item>
+        </router-link>
+      </el-menu>
+      <el-menu
+        class="menu"
+        :collapse="isCollapse"
+        :text-color="textColor"
+        :active-text-color="activeTextColor"
+      >
+        <router-link to="/index/power">
+          <el-menu-item index="3">
+            <i class="el-icon-user"></i>
+            <span slot="title">权限管理</span>
           </el-menu-item>
         </router-link>
       </el-menu>

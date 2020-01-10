@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 产品操作 步骤5
+ * @version: 
+ * @Author: dingjia z
+ * @Date: 2020-01-08 17:55:34
+ * @LastEditors  : dingjia z
+ * @LastEditTime : 2020-01-10 15:37:12
+ -->
 <template>
   <div>
     <div class="h2">产品最后的设置</div>

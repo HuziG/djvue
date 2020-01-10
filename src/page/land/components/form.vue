@@ -11,7 +11,6 @@
       <el-form-item prop="username">
         <el-input
           size="small"
-          @keyup.enter.native="handleLogin"
           v-model="loginForm.username"
           auto-complete="off"
           placeholder="请输入用户名"
@@ -22,7 +21,6 @@
       <el-form-item prop="password">
         <el-input
           size="small"
-          @keyup.enter.native="handleLogin"
           :type="passwordType"
           v-model="loginForm.password"
           auto-complete="off"
@@ -43,7 +41,7 @@
         <el-button
           type="primary"
           size="small"
-          @click.native.prevent="handleLogin"
+          @click="handleLogin"
           class="login-submit"
           >立即登陆</el-button
         >
@@ -54,6 +52,9 @@
 
 <script>
 import Cookies from "js-cookie";
+import router from "@/router";
+
+import { UserLand } from "@/api/user";
 
 export default {
   name: "userlogin",
@@ -85,6 +86,10 @@ export default {
         : (this.passwordType = "");
     },
     handleLogin() {
+      UserLand(this.loginForm.username, this.loginForm.password).then(res => {
+        router.push({ path: "/index" });
+        console.log(res);
+      });
       /**
        * 登陆
        * 显示loading

@@ -46,6 +46,7 @@ import {
   Popover,
   Tag,
   Popconfirm,
+  Pagination,
   Icon
 } from "element-ui";
 Vue.use(Form);
@@ -82,6 +83,7 @@ Vue.use(TableColumn);
 Vue.use(Popover);
 Vue.use(Tag);
 Vue.use(Popconfirm);
+Vue.use(Pagination);
 Vue.use(Icon);
 
 // axios
@@ -90,7 +92,7 @@ import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 
 // vuerouter
-import router from "./router/page";
+import router from "./router";
 
 // permission
 import "./permission";

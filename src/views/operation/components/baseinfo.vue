@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 产品操作 步骤2
+ * @version: 
+ * @Author: dingjia z
+ * @Date: 2020-01-08 09:47:08
+ * @LastEditors  : dingjia z
+ * @LastEditTime : 2020-01-10 15:35:06
+ -->
 <template>
   <div>
     <div class="h2">基础信息编辑</div>
@@ -9,7 +17,7 @@
         <el-form-item label="产品简介" prop="short">
           <el-input
             v-model="form.short"
-            :autosize="{ minRows: 2, maxRows: 2}"
+            :rows="3"
             type="textarea"
             placeholder="请输入产品简介"
             style="width: 500px;"
@@ -18,7 +26,7 @@
         <el-form-item label="产品介绍" prop="long">
           <el-input
             v-model="form.long"
-            :autosize="{ minRows: 2, maxRows: 8}"
+            :rows="8"
             type="textarea"
             placeholder="请输入产品介绍"
             style="width: 500px;"

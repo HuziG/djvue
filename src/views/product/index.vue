@@ -11,7 +11,7 @@
       <el-table-column prop="zip" label="邮编"></el-table-column>
       <el-table-column fixed="right" label="操作">
         <template slot-scope="scope">
-          <el-button @click="handleCEdit(scope.row)" type="text" size="small">编辑</el-button>
+          <el-button @click="handleCEdit(scope.row)" type="text" size="small" class="edit-but">编辑</el-button>
           <el-button type="text" size="small" style="color: red;">删除</el-button>
         </template>
       </el-table-column>
@@ -69,4 +69,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.edit-but {
+  color: #67c23a;
+}
 </style>

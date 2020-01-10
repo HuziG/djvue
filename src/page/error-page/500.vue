@@ -1,7 +1,16 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: dingjia z
+ * @Date: 2020-01-06 13:06:55
+ * @LastEditors: dingjia z
+ * @LastEditTime: 2020-01-10 16:00:05
+ -->
 <template>
   <div class="error-page">
-    <div class="img"
-         style=" background-image: url('/img/bg/500.svg');"></div>
+    <div class="img">
+      <img src="@/assets/logo.png" alt="error" />
+    </div>
     <div class="content">
       <h1>500</h1>
       <div class="desc">抱歉，服务器出错了</div>

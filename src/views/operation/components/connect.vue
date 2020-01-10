@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 产品操作 步骤1
+ * @version: 
+ * @Author: dingjia z
+ * @Date: 2020-01-08 20:55:49
+ * @LastEditors  : dingjia z
+ * @LastEditTime : 2020-01-10 15:35:52
+ -->
 <template>
   <div>
     <div class="h2">产品关联设置</div>
